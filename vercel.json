@@ -1,0 +1,17 @@
+{
+  "builds": [
+    {
+      "src": "examfront/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "examfront/dist/examfront"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "^/(?!.*\\.).*$",
+      "destination": "/index.html"
+    }
+  ]
+}
