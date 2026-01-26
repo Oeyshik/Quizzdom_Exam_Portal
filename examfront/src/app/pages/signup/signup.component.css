@@ -1,0 +1,44 @@
+.full-width {
+  width: calc(100% - 30px); /* Decrease the width by 20px on both sides */
+  margin: 0 15px; /* Add 10px margin on both the left and right sides */
+}
+
+
+.form-image {
+  width: 350px; /* Adjust the width as needed */
+  height: auto; /* Automatically adjust the height */
+}
+
+/* Add padding to the mat-card */
+.mat-card-content {
+  padding: 16px; /* Adjust the padding as needed */
+}
+
+/* Add margin to the buttons inside the container */
+.container.text-center button {
+  margin: 20px 0; /* Adjust the margin as needed */
+}
+
+.container.text-center img{
+  width: 170px;
+  height: auto;
+  margin-top: 20px;
+}
+
+
+/* To keep the font inside the mat-card black while switching light mode to dark mode */
+/* This is the only things that is added to keep the color intact*/
+.my-card {
+  /* Set the background color */
+  background-color: #FFFF99;
+
+  /* Set the font color for elements inside the card */
+  color: black;
+}
+
+.my-card mat-hint,
+.my-card mat-label,
+.my-card input {
+  /* Set the font color for input elements and hints inside the card */
+  color: black !important;
+}

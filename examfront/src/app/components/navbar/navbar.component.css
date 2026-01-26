@@ -1,0 +1,26 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+/* Define a custom color */
+.mat-cyan {
+  background-color: cyan;
+  color: white; /* Text color for better visibility */
+}
+
+/* Add styling for the logo */
+.logo {
+  width: 30px; /* 24px Adjust the width as needed */
+  height: 30px; /* Adjust the height as needed */
+  margin-right: 8px; /* Adjust the margin as needed */
+}
+
+/* Light Mode */
+.light-mode-icon {
+  color: #FFFFFF; /* Light mode icon color */
+}
+
+/* Dark Mode */
+.dark-mode-icon {
+  color: #000000; /* Dark mode icon color */
+}

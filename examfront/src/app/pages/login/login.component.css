@@ -1,0 +1,63 @@
+/* Reduce logo size (same as forgot-password) */
+.container.text-center img {
+  max-width: 150px;
+  height: auto;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+/* Full width Material fields */
+.full-width {
+  width: 100%;
+}
+
+/* Left padding inside inputs */
+.mat-form-field-infix {
+  padding-left: 10px;
+}
+
+/* Spacing between form fields */
+mat-form-field {
+  margin-bottom: 5px;
+}
+
+/* Button spacing */
+.container.text-center button {
+  margin: 8px 10px;
+  padding-bottom: 5px;
+}
+
+/* Bottom padding for button container */
+.container.text-center {
+  padding-bottom: 20px;
+}
+
+.login-btn {
+  width: 30%;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+/* Card styling (kept + aligned) */
+.my-card {
+  background-color: #FFFF99;
+  padding: 20px;
+  border-radius: 10px;
+  color: black;
+}
+
+/* Keep font color intact in dark mode */
+.my-card mat-hint,
+.my-card mat-label,
+.my-card input {
+  color: black !important;
+}
+
+/* Optional margin helper */
+.ml20 {
+  margin-left: 20px;
+}

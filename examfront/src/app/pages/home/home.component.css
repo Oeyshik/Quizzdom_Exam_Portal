@@ -1,0 +1,22 @@
+.container.text-center img{
+  width: 200px;
+  height: auto;
+  margin-top: 20px;
+}
+
+/* To keep the font inside the mat-card black while switching light mode to dark mode */
+/* This is the only things that is added to keep the color intact*/
+.my-card {
+  /* Set the background color */
+  background-color: #FFFF99;
+
+  /* Set the font color for elements inside the card */
+  color: black;
+}
+
+.my-card mat-hint,
+.my-card mat-label,
+.my-card input {
+  /* Set the font color for input elements and hints inside the card */
+  color: black !important;
+}

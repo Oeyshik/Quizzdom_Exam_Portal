@@ -1,0 +1,76 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row" style="margin-top: 20px;">
+      <!-- <div class="col-md-6">
+
+        <img src="assets/images/signup-image-1.png" loading="lazy" alt="Image" class="form-image float-right" />
+
+        <img src="assets/images/signup-image-2.png" loading="lazy" alt="Image" class="form-image float-right" />
+      </div> -->
+      <div class="col-md-3"></div> <!-- Add an offset column -->
+      <div class="col-md-6">
+        <mat-card class="my-card" style="margin-bottom: 20px; background-color: #FFFF99;">
+        <div class="container text-center">
+          <img src="assets/logos/logo 19.png" />
+        </div>
+        <h1 class="text-center">Ignite your Quizzdom !!</h1>
+
+        <!-- {{ user | json }} -->
+
+        <form (ngSubmit)="formSubmit()">
+          <!-- Username field -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>User Name</mat-label>
+            <input [(ngModel)] = "user.username" name="username" matInput placeholder="Enter Your Username" required>
+            <mat-hint>Choose a unique username</mat-hint>
+          </mat-form-field>
+          <br/><br/>
+
+          <!-- Firstname field -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input [(ngModel)] = "user.firstName" name="firstName" matInput placeholder="Enter your First Name" required>
+          </mat-form-field>
+
+          <!-- Lastname field -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input [(ngModel)] = "user.lastName" name="lastName" matInput placeholder="Enter your Last Name">
+          </mat-form-field>
+
+          <!-- Email field -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input [(ngModel)] = "user.email" name="email" matInput placeholder="pat@example.com" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <!-- Password field-->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input [(ngModel)] = "user.password" name="password" matInput [type]="hide ? 'password' : 'text'" required>
+            <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <!-- Phone Number field -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Phone Number</mat-label>
+            <input [(ngModel)]="user.phone" name="phone" matInput #input pattern="[0-9]*" minlength="10" maxlength="10" placeholder="9568741235" required>
+            <mat-error *ngIf="input.oninvalid">
+              Please enter a valid 10-digit phone number.
+            </mat-error>
+          </mat-form-field>
+
+          <div class="container text-center">
+            <button type="submit" mat-raised-button color="primary">Register</button>
+            <button class="ml20" type="reset" mat-raised-button color="accent">Reset</button>
+          </div>
+        </form>
+      </mat-card>
+      </div>
+      <div class="col-md-3"></div> <!-- Add an offset column -->
+    </div>
+  </div>
+</div>

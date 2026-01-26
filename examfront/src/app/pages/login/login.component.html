@@ -1,0 +1,47 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row" style="margin-top: 20px;">
+      <div class="col-md-3"></div> <!-- Add an offset column -->
+      <div class="col-md-6">
+        <mat-card class="my-card" style="background-color: #FFFF99;">
+          <div class="container text-center">
+            <img src="assets/logos/logo 19.png" />
+          </div>
+          <h1 class="text-center">Ignite your Quizzdom !!</h1>
+
+          <form (ngSubmit)="formSubmit()">
+            <!-- Username field -->
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>User Name</mat-label>
+              <input [(ngModel)]="loginData.username" name="username" matInput placeholder="Enter Your Username" required>
+              <mat-hint>Enter Valid Username</mat-hint>
+            </mat-form-field>
+            <br /><br />
+
+            <!-- Password field-->
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Password</mat-label>
+              <input [(ngModel)]="loginData.password" name="password" matInput [type]="hide ? 'password' : 'text'" required>
+              <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+
+            <div class="container button-wrapper">
+              <button  class="login-btn" type="submit" mat-raised-button color="primary">LOGIN</button>
+              <!-- <button class="ml20" type="reset" mat-raised-button color="accent">Reset</button> -->
+            </div>
+            <div class="container text-center" style="margin-top: 15px;">
+              Forgot Password? Click
+              <a routerLink="/forgot-password" style="color: #1976d2; text-decoration: none; cursor: pointer;">
+                 here
+              </a>
+              to reset password.
+            </div>
+          </form>
+        </mat-card>
+      </div>
+      <div class="col-md-3"></div> <!-- Add another offset column -->
+    </div>
+  </div>
+</div>
