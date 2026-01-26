@@ -8,9 +8,9 @@
       }
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "^/(?!.*\\.).*$",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
