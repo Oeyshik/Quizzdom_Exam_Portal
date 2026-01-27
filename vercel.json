@@ -1,6 +1,11 @@
 {
-  "framework": "angular",
-  "outputDirectory": "dist/examfront",
+  "builds": [
+    {
+      "src": "examfront/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist/examfront" }
+    }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
