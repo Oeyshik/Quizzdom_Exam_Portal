@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: quizzdom-backend
+    env: java
+    rootDir: examserver
+    buildCommand: chmod +x mvnw && ./mvnw clean package -DskipTests
+    startCommand: java -jar target/*.jar
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_USERNAME
+        sync: false
+      - key: DATABASE_PASSWORD
+        sync: false
