@@ -1,7 +1,4 @@
 {
-  "framework": "angular",
-  "rootDirectory": "examfront",
-  "outputDirectory": "dist/examfront",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
