@@ -1,0 +1,139 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row quiz-page-row">
+      <div class="col-md-12">
+        <mat-card class="my-card quiz-shell">
+          <div class="quiz-toolbar">
+            <button mat-stroked-button type="button" (click)="goSubjects()" class="toolbar-btn">
+              <mat-icon aria-hidden="true">arrow_back</mat-icon>
+              Subjects
+            </button>
+            <button mat-stroked-button type="button" (click)="goDashboard()" class="toolbar-btn">
+              <mat-icon aria-hidden="true">home</mat-icon>
+              Dashboard
+            </button>
+          </div>
+
+          <div class="container text-center" *ngIf="!submitted">
+            <img src="assets/logos/logo 19.png" class="quiz-logo" alt="" />
+          </div>
+
+          <ng-container *ngIf="loading">
+            <div class="quiz-state">
+              <mat-icon class="spin-icon" aria-hidden="true">hourglass_empty</mat-icon>
+              <span>Loading exam…</span>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="!loading && loadError">
+            <h1 class="text-center quiz-title">Quiz unavailable</h1>
+            <p class="text-center quiz-lead">
+              This subject has no questions yet, or the quiz file could not be loaded. Edit
+              <code>assets/data/quiz-questions.json</code> to add items under
+              <code>questionsBySubject</code> for this subject id.
+            </p>
+            <div class="text-center quiz-actions-mid">
+              <button mat-raised-button color="primary" (click)="goSubjects()">Back to subjects</button>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="!loading && !loadError && !submitted">
+            <h1 class="text-center quiz-title">{{ subjectTitle }}</h1>
+            <p class="text-center quiz-subtitle">
+              Question {{ currentIndex + 1 }} of {{ questions.length }}
+            </p>
+
+            <div class="container exam-body">
+              <mat-progress-bar mode="determinate" [value]="progressFraction * 100"></mat-progress-bar>
+
+              <div class="question-card" *ngIf="currentQuestion as q">
+                <p class="question-text">{{ q.question }}</p>
+                <mat-radio-group
+                  class="options-group"
+                  [(ngModel)]="answers[currentIndex]"
+                  [name]="'q-' + q.id"
+                >
+                  <mat-radio-button
+                    *ngFor="let opt of q.options; let i = index"
+                    class="option-row"
+                    [value]="i"
+                  >
+                    <span class="option-label">{{ opt }}</span>
+                  </mat-radio-button>
+                </mat-radio-group>
+              </div>
+
+              <div class="nav-row">
+                <button mat-stroked-button type="button" (click)="prev()" [disabled]="currentIndex === 0">
+                  <mat-icon aria-hidden="true">navigate_before</mat-icon>
+                  Previous
+                </button>
+                <button
+                  *ngIf="!isLastQuestion"
+                  mat-raised-button
+                  color="primary"
+                  type="button"
+                  (click)="next()"
+                >
+                  Next
+                  <mat-icon aria-hidden="true">navigate_next</mat-icon>
+                </button>
+                <button
+                  *ngIf="isLastQuestion"
+                  mat-raised-button
+                  color="accent"
+                  type="button"
+                  (click)="submit()"
+                >
+                  Submit exam
+                </button>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="!loading && !loadError && submitted">
+            <div class="container results-wrap">
+              <h1 class="text-center quiz-title">Exam complete</h1>
+              <p class="text-center quiz-subtitle">{{ subjectTitle }}</p>
+
+              <mat-card class="result-summary">
+                <div class="score-circle">
+                  <span class="score-value">{{ score }}</span>
+                  <span class="score-of">/ {{ questions.length }}</span>
+                </div>
+                <p class="score-caption">Correct answers</p>
+                <p class="score-percent" *ngIf="questions.length">
+                  {{ (100 * score / questions.length) | number : '1.0-0' }}% score
+                </p>
+              </mat-card>
+
+              <h2 class="review-heading">Review</h2>
+              <div class="review-list">
+                <mat-card *ngFor="let q of questions; let i = index" class="review-item" [class.review-wrong]="!isCorrect(i)">
+                  <div class="review-q">{{ i + 1 }}. {{ q.question }}</div>
+                  <div class="review-detail">
+                    <span class="label">Your answer:</span>
+                    <span class="value" [class.bad]="!isCorrect(i)">
+                      {{ answers[i] != null ? q.options[answers[i]!] : '— (skipped)' }}
+                    </span>
+                  </div>
+                  <div class="review-detail" *ngIf="!isCorrect(i)">
+                    <span class="label">Correct:</span>
+                    <span class="value good">{{ q.options[q.correctIndex] }}</span>
+                  </div>
+                </mat-card>
+              </div>
+
+              <div class="text-center result-actions">
+                <button mat-stroked-button type="button" (click)="retake()">Retake this quiz</button>
+                <button mat-raised-button color="primary" type="button" (click)="goSubjects()">
+                  Another subject
+                </button>
+              </div>
+            </div>
+          </ng-container>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

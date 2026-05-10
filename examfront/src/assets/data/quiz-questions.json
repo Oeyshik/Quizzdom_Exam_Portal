@@ -1,0 +1,216 @@
+{
+  "subjects": [
+    {
+      "id": "networking",
+      "title": "Networking",
+      "description": "Protocols, TCP/IP, OSI, and how devices communicate.",
+      "icon": "router"
+    },
+    {
+      "id": "java-basics",
+      "title": "Java Basics",
+      "description": "Syntax, OOP concepts, and core Java language features.",
+      "icon": "code"
+    },
+    {
+      "id": "operating-systems",
+      "title": "Operating Systems",
+      "description": "Processes, memory, scheduling, and system fundamentals.",
+      "icon": "memory"
+    },
+    {
+      "id": "data-structures",
+      "title": "Data Structures",
+      "description": "Arrays, trees, graphs, and algorithm building blocks.",
+      "icon": "account_tree"
+    },
+    {
+      "id": "databases",
+      "title": "Databases",
+      "description": "SQL, relations, transactions, and data storage basics.",
+      "icon": "storage"
+    }
+  ],
+  "questionsBySubject": {
+    "networking": [
+      {
+        "id": "net-1",
+        "question": "Which layer of the OSI model is responsible for routing between networks?",
+        "options": [
+          "Data Link",
+          "Network",
+          "Transport",
+          "Session"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "net-2",
+        "question": "What does DNS primarily translate?",
+        "options": [
+          "IP address to MAC address",
+          "Hostnames to IP addresses",
+          "Ports to protocols",
+          "Frames to packets"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "net-3",
+        "question": "Which protocol provides reliable, connection-oriented delivery?",
+        "options": ["UDP", "ICMP", "TCP", "ARP"],
+        "correctIndex": 2
+      },
+      {
+        "id": "net-4",
+        "question": "What is the default port for HTTP (non-TLS)?",
+        "options": ["21", "25", "80", "443"],
+        "correctIndex": 2
+      }
+    ],
+    "java-basics": [
+      {
+        "id": "java-1",
+        "question": "Which keyword is used to inherit a class in Java?",
+        "options": ["implements", "extends", "inherits", "super"],
+        "correctIndex": 1
+      },
+      {
+        "id": "java-2",
+        "question": "Where does program execution begin in a runnable Java application?",
+        "options": [
+          "The constructor of the main class",
+          "The static main method",
+          "The first instance method called",
+          "The finalize method"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "java-3",
+        "question": "Which access modifier makes a member visible only within its own class?",
+        "options": ["protected", "public", "default (package)", "private"],
+        "correctIndex": 3
+      },
+      {
+        "id": "java-4",
+        "question": "What is the superclass of every class in Java?",
+        "options": ["Object", "Class", "Throwable", "Comparable"],
+        "correctIndex": 0
+      }
+    ],
+    "operating-systems": [
+      {
+        "id": "os-1",
+        "question": "Which component of an OS decides which ready process runs on the CPU?",
+        "options": ["Memory manager", "Scheduler", "File system", "Shell"],
+        "correctIndex": 1
+      },
+      {
+        "id": "os-2",
+        "question": "Virtual memory primarily allows:",
+        "options": [
+          "Faster disk access than RAM",
+          "Running processes larger than physical RAM",
+          "Replacing the need for a file system",
+          "Direct hardware access for all programs"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "os-3",
+        "question": "A deadlock requires among other conditions:",
+        "options": [
+          "Preemption of resources",
+          "Circular wait",
+          "Single-threaded processes only",
+          "No mutual exclusion"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "os-4",
+        "question": "What is a critical section?",
+        "options": [
+          "A section of disk used for swapping",
+          "Code that accesses shared resources and must run atomically",
+          "The boot sector of the OS",
+          "Kernel stack memory"
+        ],
+        "correctIndex": 1
+      }
+    ],
+    "data-structures": [
+      {
+        "id": "ds-1",
+        "question": "In a binary search tree, an in-order traversal yields nodes in what order for a valid BST?",
+        "options": [
+          "Random order",
+          "Sorted order by key",
+          "Reverse sorted order only",
+          "Level-order by depth"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "ds-2",
+        "question": "What is the average time complexity of search in a balanced BST with n nodes?",
+        "options": ["O(1)", "O(log n)", "O(n)", "O(n²)"],
+        "correctIndex": 1
+      },
+      {
+        "id": "ds-3",
+        "question": "Which structure follows First-In-First-Out (FIFO)?",
+        "options": ["Stack", "Queue", "Heap", "Trie"],
+        "correctIndex": 1
+      },
+      {
+        "id": "ds-4",
+        "question": "Adjacency lists are commonly used to represent:",
+        "options": ["Hash tables", "Graphs", "Priority queues", "B-trees"],
+        "correctIndex": 1
+      }
+    ],
+    "databases": [
+      {
+        "id": "db-1",
+        "question": "Which SQL clause filters rows before grouping?",
+        "options": ["HAVING", "WHERE", "GROUP BY", "ORDER BY"],
+        "correctIndex": 1
+      },
+      {
+        "id": "db-2",
+        "question": "ACID properties primarily relate to:",
+        "options": [
+          "Query optimization",
+          "Transaction reliability",
+          "Index structures only",
+          "Backup scheduling"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "db-3",
+        "question": "A primary key must be:",
+        "options": [
+          "A foreign key in another table",
+          "Unique and non-null for each row",
+          "Always auto-incrementing",
+          "The largest column in the table"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "db-4",
+        "question": "Normalization is mainly used to:",
+        "options": [
+          "Speed up every query",
+          "Reduce redundancy and anomalies",
+          "Encrypt data at rest",
+          "Replace indexes"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  }
+}

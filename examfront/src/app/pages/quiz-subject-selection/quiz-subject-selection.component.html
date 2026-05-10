@@ -1,0 +1,55 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row quiz-page-row">
+      <div class="col-md-12">
+        <mat-card class="my-card quiz-shell">
+          <div class="quiz-toolbar">
+            <button mat-stroked-button type="button" (click)="goDashboard()" class="back-btn">
+              <mat-icon aria-hidden="true">arrow_back</mat-icon>
+              Dashboard
+            </button>
+          </div>
+
+          <div class="container text-center">
+            <img src="assets/logos/logo 19.png" class="quiz-logo" alt="" />
+          </div>
+
+          <h1 class="text-center quiz-title">Take a Quiz</h1>
+          <p class="text-center quiz-lead">
+            Choose a subject to begin. Questions are loaded from the quiz data file so you can edit them anytime.
+          </p>
+
+          <div class="container quiz-content">
+            <div *ngIf="loading" class="quiz-state">
+              <mat-icon class="spin-icon" aria-hidden="true">hourglass_empty</mat-icon>
+              <span>Loading subjects…</span>
+            </div>
+
+            <div *ngIf="loadError && !loading" class="quiz-state quiz-state-error">
+              <mat-icon aria-hidden="true">error_outline</mat-icon>
+              <span>Could not load quiz data. Check that <code>assets/data/quiz-questions.json</code> exists.</span>
+            </div>
+
+            <div *ngIf="!loading && !loadError" class="row subject-grid">
+              <div class="col-md-6 col-lg-4" *ngFor="let s of subjects">
+                <mat-card class="subject-card" (click)="startExam(s.id)" (keyup.enter)="startExam(s.id)" tabindex="0" role="button">
+                  <div class="subject-card-inner">
+                    <div class="subject-icon-wrap">
+                      <mat-icon aria-hidden="true">{{ s.icon || 'menu_book' }}</mat-icon>
+                    </div>
+                    <h2 class="subject-title">{{ s.title }}</h2>
+                    <p class="subject-desc">{{ s.description }}</p>
+                    <div class="subject-footer">
+                      <span>Start exam</span>
+                      <mat-icon aria-hidden="true">chevron_right</mat-icon>
+                    </div>
+                  </div>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

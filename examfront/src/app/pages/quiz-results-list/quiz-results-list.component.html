@@ -1,0 +1,77 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row quiz-page-row">
+      <div class="col-md-12">
+        <mat-card class="my-card quiz-shell">
+          <div class="quiz-toolbar">
+            <button mat-stroked-button type="button" (click)="goDashboard()" class="toolbar-btn">
+              <mat-icon aria-hidden="true">arrow_back</mat-icon>
+              Dashboard
+            </button>
+          </div>
+
+          <div class="container text-center">
+            <img src="assets/logos/logo 19.png" class="quiz-logo" alt="" />
+          </div>
+
+          <h1 class="text-center quiz-title">Quiz results</h1>
+          <p class="text-center quiz-lead">
+            Your saved attempts appear below. Open a report in the browser or download it as an HTML file.
+          </p>
+
+          <div class="container results-table-wrap">
+            <div *ngIf="loading" class="quiz-state">
+              <mat-icon class="spin-icon" aria-hidden="true">hourglass_empty</mat-icon>
+              <span>Loading attempts…</span>
+            </div>
+
+            <div *ngIf="loadError && !loading" class="quiz-state quiz-state-error">
+              <mat-icon aria-hidden="true">error_outline</mat-icon>
+              <span>Could not load results. Make sure the server is running and you are logged in.</span>
+            </div>
+
+            <div *ngIf="!loading && !loadError && attempts.length === 0" class="quiz-state">
+              <mat-icon aria-hidden="true">inbox</mat-icon>
+              <span>No attempts yet. Complete a quiz from the dashboard to see it here.</span>
+            </div>
+
+            <div *ngIf="!loading && !loadError && attempts.length > 0" class="table-responsive">
+              <table class="results-table">
+                <thead>
+                  <tr>
+                    <th>Subject</th>
+                    <th>Attempt</th>
+                    <th>Score</th>
+                    <th>Completed</th>
+                    <th class="col-actions">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let row of attempts">
+                    <td class="cell-subject">
+                      <span class="subject-title">{{ row.subjectTitle }}</span>
+                      <span class="subject-id">{{ row.subjectId }}</span>
+                    </td>
+                    <td>#{{ row.attemptNumber }}</td>
+                    <td>{{ row.score }} / {{ row.totalQuestions }}</td>
+                    <td>{{ formatCompletedAt(row.completedAt) }}</td>
+                    <td class="col-actions">
+                      <button mat-stroked-button type="button" color="primary" (click)="viewAttempt(row.id)">
+                        <mat-icon aria-hidden="true">visibility</mat-icon>
+                        View
+                      </button>
+                      <button mat-stroked-button type="button" (click)="downloadAttempt(row)">
+                        <mat-icon aria-hidden="true">download</mat-icon>
+                        Download
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

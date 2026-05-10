@@ -1,0 +1,80 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row quiz-page-row">
+      <div class="col-md-12">
+        <mat-card class="my-card quiz-shell">
+          <div class="quiz-toolbar">
+            <button mat-stroked-button type="button" (click)="goList()" class="toolbar-btn">
+              <mat-icon aria-hidden="true">arrow_back</mat-icon>
+              All results
+            </button>
+          </div>
+
+          <ng-container *ngIf="loading">
+            <div class="quiz-state">
+              <mat-icon class="spin-icon" aria-hidden="true">hourglass_empty</mat-icon>
+              <span>Loading report…</span>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="!loading && loadError">
+            <h1 class="text-center quiz-title">Result not found</h1>
+            <p class="text-center quiz-lead">This attempt may have been removed or you do not have access.</p>
+            <div class="text-center">
+              <button mat-raised-button color="primary" (click)="goList()">Back to results</button>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="!loading && !loadError && detail as d">
+            <div class="container text-center">
+              <img src="assets/logos/logo 19.png" class="quiz-logo" alt="" />
+            </div>
+            <h1 class="text-center quiz-title">Exam report</h1>
+            <p class="text-center quiz-subtitle">
+              {{ d.subjectTitle }} · Attempt #{{ d.attemptNumber }} · {{ formatCompletedAt(d.completedAt) }}
+            </p>
+
+            <div class="toolbar-actions text-center">
+              <button mat-raised-button color="accent" type="button" (click)="download()">
+                <mat-icon aria-hidden="true">download</mat-icon>
+                Download HTML
+              </button>
+            </div>
+
+            <div class="container results-wrap">
+              <mat-card class="result-summary">
+                <div class="score-circle">
+                  <span class="score-value">{{ d.score }}</span>
+                  <span class="score-of">/ {{ d.totalQuestions }}</span>
+                </div>
+                <p class="score-caption">Correct answers</p>
+                <p class="score-percent" *ngIf="d.totalQuestions">
+                  {{ (100 * d.score) / d.totalQuestions | number : '1.0-0' }}% score
+                </p>
+              </mat-card>
+
+              <h2 class="review-heading">Review</h2>
+              <div class="review-list">
+                <mat-card
+                  *ngFor="let q of d.details; let i = index"
+                  class="review-item"
+                  [class.review-wrong]="!isCorrect(i)"
+                >
+                  <div class="review-q">{{ i + 1 }}. {{ q.question }}</div>
+                  <div class="review-detail">
+                    <span class="label">Your answer:</span>
+                    <span class="value" [class.bad]="!isCorrect(i)">{{ selectedLabel(i) }}</span>
+                  </div>
+                  <div class="review-detail" *ngIf="!isCorrect(i)">
+                    <span class="label">Correct:</span>
+                    <span class="value good">{{ correctLabel(i) }}</span>
+                  </div>
+                </mat-card>
+              </div>
+            </div>
+          </ng-container>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

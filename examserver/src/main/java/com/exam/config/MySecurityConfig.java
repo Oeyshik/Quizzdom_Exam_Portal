@@ -53,7 +53,8 @@ public class MySecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/authenticate/**", "/user/**", "/role/**", "/password/**").permitAll()
+                        .requestMatchers("/authenticate/**", "/user/**", "/role/**", "/password/**", "/quiz-attempt/**")
+                        .permitAll()
                         .anyRequest().authenticated());
 
         logger.info("Security filter chain configured successfully");

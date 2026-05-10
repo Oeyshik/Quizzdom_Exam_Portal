@@ -1,37 +1,105 @@
 <div class="bootstrap-wrapper">
   <div class="container">
-    <div class="row" style="margin-top: 20px;">
+    <div class="row dashboard-page-row">
       <div class="col-md-12">
-        <mat-card class="my-card" style="background-color: #FFFF99;">
+        <mat-card class="my-card dashboard-shell">
           <div class="container text-center">
-            <img src="assets/logos/logo 19.png" style="width: 150px;" />
+            <img src="assets/logos/logo 19.png" class="dashboard-logo" alt="" />
           </div>
-          <h1 class="text-center">User Dashboard</h1>
-          <h2 class="text-center">Welcome, {{ user?.firstName }} {{ user?.lastName }}!</h2>
-          
-          <div class="container" style="margin-top: 30px;">
-            <div class="row">
-              <div class="col-md-6">
-                <mat-card style="background-color: #f0f0f0; margin: 10px;">
-                  <h3>User Information</h3>
-                  <p><strong>Username:</strong> {{ user?.username }}</p>
-                  <p><strong>Email:</strong> {{ user?.email }}</p>
-                  <p><strong>Role:</strong> {{ user?.roles?.join(', ') }}</p>
+          <h1 class="text-center dashboard-title">User Dashboard</h1>
+          <h2 class="text-center dashboard-welcome">
+            Welcome, {{ user?.firstName }} {{ user?.lastName }}!
+          </h2>
+
+          <div class="container dashboard-panels-wrap">
+            <div class="row dashboard-panels-row">
+              <div class="col-lg-6">
+                <mat-card class="panel user-info-panel">
+                  <mat-card-header class="panel-header">
+                    <div mat-card-avatar class="panel-avatar">
+                      <mat-icon aria-hidden="true">person</mat-icon>
+                    </div>
+                    <mat-card-title>User Information</mat-card-title>
+                    <mat-card-subtitle>Your account details</mat-card-subtitle>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <div class="user-profile-strip">
+                      <div class="user-avatar" aria-hidden="true">{{ userInitials }}</div>
+                      <div class="user-profile-text">
+                        <span class="user-profile-name">{{ user?.firstName }} {{ user?.lastName }}</span>
+                        <span class="user-profile-handle">@{{ user?.username }}</span>
+                      </div>
+                    </div>
+                    <ul class="info-list">
+                      <li class="info-item">
+                        <mat-icon class="info-item-icon" aria-hidden="true">alternate_email</mat-icon>
+                        <div class="info-item-body">
+                          <span class="info-item-label">Email</span>
+                          <span class="info-item-value">{{ user?.email }}</span>
+                        </div>
+                      </li>
+                      <li class="info-item">
+                        <mat-icon class="info-item-icon" aria-hidden="true">verified_user</mat-icon>
+                        <div class="info-item-body">
+                          <span class="info-item-label">Role</span>
+                          <span class="info-item-value">{{ rolesDisplay }}</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </mat-card-content>
                 </mat-card>
               </div>
-              <div class="col-md-6">
-                <mat-card style="background-color: #f0f0f0; margin: 10px;">
-                  <h3>Available Actions</h3>
-                  <p>Take Quiz</p>
-                  <p>View Results</p>
-                  <p>View Profile</p>
-                  <p>Update Settings</p>
+              <div class="col-lg-6">
+                <mat-card class="panel actions-panel">
+                  <mat-card-header class="panel-header">
+                    <div mat-card-avatar class="panel-avatar panel-avatar-accent">
+                      <mat-icon aria-hidden="true">dashboard</mat-icon>
+                    </div>
+                    <mat-card-title>Available Actions</mat-card-title>
+                    <mat-card-subtitle>What you can do next</mat-card-subtitle>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <div class="action-grid">
+                      <a mat-stroked-button class="action-tile" routerLink="/user/quiz/subjects">
+                        <mat-icon aria-hidden="true">quiz</mat-icon>
+                        <span class="action-tile-text">
+                          <span class="action-tile-title">Take Quiz</span>
+                          <span class="action-tile-desc">Choose a subject and start an exam</span>
+                        </span>
+                        <mat-icon class="action-tile-chevron" aria-hidden="true">chevron_right</mat-icon>
+                      </a>
+                      <a mat-stroked-button class="action-tile" routerLink="/user/quiz/results">
+                        <mat-icon aria-hidden="true">assessment</mat-icon>
+                        <span class="action-tile-text">
+                          <span class="action-tile-title">View Results</span>
+                          <span class="action-tile-desc">Review past attempts</span>
+                        </span>
+                        <mat-icon class="action-tile-chevron" aria-hidden="true">chevron_right</mat-icon>
+                      </a>
+                      <button type="button" mat-stroked-button class="action-tile" (click)="actionComingSoon('View Profile')">
+                        <mat-icon aria-hidden="true">account_circle</mat-icon>
+                        <span class="action-tile-text">
+                          <span class="action-tile-title">View Profile</span>
+                          <span class="action-tile-desc">See your public info</span>
+                        </span>
+                        <mat-icon class="action-tile-chevron" aria-hidden="true">chevron_right</mat-icon>
+                      </button>
+                      <button type="button" mat-stroked-button class="action-tile" (click)="actionComingSoon('Update Settings')">
+                        <mat-icon aria-hidden="true">tune</mat-icon>
+                        <span class="action-tile-text">
+                          <span class="action-tile-title">Update Settings</span>
+                          <span class="action-tile-desc">Preferences and security</span>
+                        </span>
+                        <mat-icon class="action-tile-chevron" aria-hidden="true">chevron_right</mat-icon>
+                      </button>
+                    </div>
+                  </mat-card-content>
                 </mat-card>
               </div>
             </div>
           </div>
 
-          <div class="container text-center" style="margin-top: 30px;">
+          <div class="container text-center dashboard-logout-wrap">
             <button mat-raised-button color="warn" (click)="logout()">Logout</button>
           </div>
         </mat-card>

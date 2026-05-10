@@ -7,6 +7,10 @@ import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { QuizSubjectSelectionComponent } from './pages/quiz-subject-selection/quiz-subject-selection.component';
+import { QuizExamComponent } from './pages/quiz-exam/quiz-exam.component';
+import { QuizResultsListComponent } from './pages/quiz-results-list/quiz-results-list.component';
+import { QuizResultDetailComponent } from './pages/quiz-result-detail/quiz-result-detail.component';
 import { adminGuard, userGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -43,6 +47,26 @@ const routes: Routes = [
   {
     path: 'user/dashboard',
     component: UserDashboardComponent,
+    canActivate: [userGuard],
+  },
+  {
+    path: 'user/quiz/subjects',
+    component: QuizSubjectSelectionComponent,
+    canActivate: [userGuard],
+  },
+  {
+    path: 'user/quiz/exam/:subjectId',
+    component: QuizExamComponent,
+    canActivate: [userGuard],
+  },
+  {
+    path: 'user/quiz/results',
+    component: QuizResultsListComponent,
+    canActivate: [userGuard],
+  },
+  {
+    path: 'user/quiz/results/:attemptId',
+    component: QuizResultDetailComponent,
     canActivate: [userGuard],
   },
 ];

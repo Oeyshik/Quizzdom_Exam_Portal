@@ -24,6 +24,12 @@ import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { QuizSubjectSelectionComponent } from './pages/quiz-subject-selection/quiz-subject-selection.component';
+import { QuizExamComponent } from './pages/quiz-exam/quiz-exam.component';
+import { QuizResultsListComponent } from './pages/quiz-results-list/quiz-results-list.component';
+import { QuizResultDetailComponent } from './pages/quiz-result-detail/quiz-result-detail.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -36,7 +42,11 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
     AdminDashboardComponent,
     UserDashboardComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    QuizSubjectSelectionComponent,
+    QuizExamComponent,
+    QuizResultsListComponent,
+    QuizResultDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +62,8 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
     MatSnackBarModule,
     MatCardModule,
     MatToolbarModule,
+    MatRadioModule,
+    MatProgressBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
